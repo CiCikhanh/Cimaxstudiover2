@@ -13,99 +13,103 @@
 
     /* --- TECH CONTACT BOX GLOWING STYLE --- */
     .contact-tech-box {
-      border: 2px solid #00f6ff;
-      box-shadow: 0 0 16px #00f6ff, 0 0 40px #23272f inset;
-      background: rgba(35,39,47,0.96);
-      border-radius: 16px;
-      padding: 32px 40px;
-      color: #f6f6f6;
-      position: relative;
-    }
-    .contact-tech-box::before,
-    .contact-tech-box::after {
-      content: '';
-      position: absolute;
-      width: 28px; height: 28px;
-      background: transparent;
-      border-radius: 6px;
-      border: 2px solid #00f6ff;
-      box-shadow: 0 0 16px #00f6ff;
-    }
-    .contact-tech-box::before {
-      top: -8px; left: -8px;
-    }
-    .contact-tech-box::after {
-      bottom: -8px; right: -8px;
-    }
-
-    .contact-tech-box h2 {
-      color: #00f6ff;
-      text-align: center;
-      font-family: 'Orbitron', Arial, sans-serif;
-      text-shadow: 0 0 10px #00f6ff;
-      font-size: 2em;
-      margin-top: 0;
-    }
-
-    .contact-tech-box label {
-      color: #00f6ff;
-      font-weight: 600;
-      margin-bottom: 4px;
-      margin-top: 14px;
-      text-shadow: 0 0 6px #00f6ff;
-      letter-spacing: 0.5px;
-    }
-
-    .contact-tech-box input,
-    .contact-tech-box textarea {
-      background: #23272f;
-      border: 1.5px solid #00f6ff;
-      color: #f6f6f6;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      font-size: 1em;
-      padding: 8px 12px;
-      box-shadow: 0 0 6px #00f6ff inset;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
-    .contact-tech-box input:focus,
-    .contact-tech-box textarea:focus {
-      border: 2px solid #00f6ff;
-      outline: none;
-      box-shadow: 0 0 16px #00f6ff;
-    }
-
-    .contact-tech-box button {
-      background: linear-gradient(90deg, #00f6ff 0%, #2376ae 100%);
-      color: #23272f;
-      font-weight: bold;
-      border: none;
-      padding: 12px 0;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 16px #00f6ff;
-      font-size: 1.1em;
-      transition: box-shadow 0.2s, background 0.2s;
-      letter-spacing: 1px;
-    }
-    .contact-tech-box button:hover {
-      box-shadow: 0 0 32px #00f6ff, 0 0 8px #00f6ff inset;
-      background: linear-gradient(90deg, #2376ae 0%, #00f6ff 100%);
-      color: #fff;
-    }
-
-    .success-message {
-      background: #23272f;
-      color: #00f6ff;
-      border: 1.5px solid #00f6ff;
-      box-shadow: 0 0 8px #00f6ff;
-      padding: 10px;
-      border-radius: 6px;
-      text-align: center;
-      margin-bottom: 12px;
-      display: none;
-    }
+  border: 2px solid #00f6ff;
+  box-shadow: 0 0 16px #00f6ff, 0 0 40px #23272f inset;
+  background: rgba(35,39,47,0.96);
+  border-radius: 16px;
+  padding: 32px 40px;
+  color: #f6f6f6;
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.contact-tech-box::before,
+.contact-tech-box::after {
+  content: '';
+  position: absolute;
+  width: 28px; height: 28px;
+  background: transparent;
+  border-radius: 6px;
+  border: 2px solid #00f6ff;
+  box-shadow: 0 0 16px #00f6ff;
+}
+.contact-tech-box::before {
+  top: -8px; left: -8px;
+}
+.contact-tech-box::after {
+  bottom: -8px; right: -8px;
+}
+.contact-tech-box h2 {
+  color: #00f6ff;
+  text-align: center;
+  font-family: 'Orbitron', Arial, sans-serif;
+  text-shadow: 0 0 10px #00f6ff;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.contact-tech-box label {
+  color: #00f6ff;
+  font-weight: 600;
+  text-shadow: 0 0 6px #00f6ff;
+  letter-spacing: 0.5px;
+  font-size: 1em;
+}
+.contact-tech-box input,
+.contact-tech-box textarea {
+  background: #23272f;
+  border: 1.5px solid #00f6ff;
+  color: #f6f6f6;
+  border-radius: 6px;
+  font-size: 1em;
+  padding: 10px 12px;
+  box-shadow: 0 0 6px #00f6ff inset;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.contact-tech-box input:focus,
+.contact-tech-box textarea:focus {
+  border: 2px solid #00f6ff;
+  outline: none;
+  box-shadow: 0 0 16px #00f6ff;
+}
+.contact-tech-box button {
+  background: linear-gradient(90deg, #00f6ff 0%, #2376ae 100%);
+  color: #23272f;
+  font-weight: bold;
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 16px #00f6ff;
+  font-size: 1.1em;
+  transition: box-shadow 0.2s, background 0.2s;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+.contact-tech-box button:hover {
+  box-shadow: 0 0 32px #00f6ff, 0 0 8px #00f6ff inset;
+  background: linear-gradient(90deg, #2376ae 0%, #00f6ff 100%);
+  color: #fff;
+}
+.success-message {
+  background: #23272f;
+  color: #00f6ff;
+  border: 1.5px solid #00f6ff;
+  box-shadow: 0 0 8px #00f6ff;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 12px;
+  display: none;
+}
   </style>
 </head>
 <body>
