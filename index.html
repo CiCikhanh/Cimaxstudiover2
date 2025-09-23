@@ -10,77 +10,96 @@
   <style>
     /* Utility for demo: Hide sections by default */
     .hidden { display: none !important; }
-    /* CONTACT LETTER BOX STYLES */
-    .contact-letter-box {
-      background: #fff;
-      padding: 30px 40px;
+
+    /* --- TECH CONTACT BOX GLOWING STYLE --- */
+    .contact-tech-box {
+      border: 2px solid #00f6ff;
+      box-shadow: 0 0 16px #00f6ff, 0 0 40px #23272f inset;
+      background: rgba(35,39,47,0.96);
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
-      max-width: 400px;
-      width: 100%;
-      border: 2px solid #4169e1;
+      padding: 32px 40px;
+      color: #f6f6f6;
       position: relative;
-      margin: 0 auto;
     }
-    .contact-letter-box::before {
-      content: "";
+    .contact-tech-box::before,
+    .contact-tech-box::after {
+      content: '';
       position: absolute;
-      top: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 8px;
-      background: #4169e1;
-      border-radius: 5px 5px 0 0;
-    }
-    .contact-letter-box h2 {
-      margin-top: 0;
-      color: #4169e1;
-      text-align: center;
-      font-size: 2em;
-    }
-    .contact-letter-box label {
-      display: block;
-      margin: 12px 0 4px 0;
-      color: #333;
-      font-weight: 500;
-    }
-    .contact-letter-box input,
-    .contact-letter-box textarea {
-      width: 100%;
-      padding: 8px 10px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
+      width: 28px; height: 28px;
+      background: transparent;
       border-radius: 6px;
-      background: #fafafa;
-      font-size: 1em;
-      resize: vertical;
+      border: 2px solid #00f6ff;
+      box-shadow: 0 0 16px #00f6ff;
     }
-    .contact-letter-box textarea {
-      min-height: 80px;
-      max-height: 180px;
+    .contact-tech-box::before {
+      top: -8px; left: -8px;
     }
-    .contact-letter-box button {
-      background: #4169e1;
-      color: #fff;
+    .contact-tech-box::after {
+      bottom: -8px; right: -8px;
+    }
+
+    .contact-tech-box h2 {
+      color: #00f6ff;
+      text-align: center;
+      font-family: 'Orbitron', Arial, sans-serif;
+      text-shadow: 0 0 10px #00f6ff;
+      font-size: 2em;
+      margin-top: 0;
+    }
+
+    .contact-tech-box label {
+      color: #00f6ff;
+      font-weight: 600;
+      margin-bottom: 4px;
+      margin-top: 14px;
+      text-shadow: 0 0 6px #00f6ff;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-tech-box input,
+    .contact-tech-box textarea {
+      background: #23272f;
+      border: 1.5px solid #00f6ff;
+      color: #f6f6f6;
+      border-radius: 6px;
+      margin-bottom: 12px;
       font-size: 1em;
+      padding: 8px 12px;
+      box-shadow: 0 0 6px #00f6ff inset;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .contact-tech-box input:focus,
+    .contact-tech-box textarea:focus {
+      border: 2px solid #00f6ff;
+      outline: none;
+      box-shadow: 0 0 16px #00f6ff;
+    }
+
+    .contact-tech-box button {
+      background: linear-gradient(90deg, #00f6ff 0%, #2376ae 100%);
+      color: #23272f;
+      font-weight: bold;
+      border: none;
       padding: 12px 0;
       width: 100%;
-      border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.2s;
-      font-weight: bold;
-      margin-top: 8px;
+      box-shadow: 0 0 16px #00f6ff;
+      font-size: 1.1em;
+      transition: box-shadow 0.2s, background 0.2s;
       letter-spacing: 1px;
     }
-    .contact-letter-box button:hover {
-      background: #2746a3;
+    .contact-tech-box button:hover {
+      box-shadow: 0 0 32px #00f6ff, 0 0 8px #00f6ff inset;
+      background: linear-gradient(90deg, #2376ae 0%, #00f6ff 100%);
+      color: #fff;
     }
+
     .success-message {
-      background: #e6f7e6;
-      color: #256029;
-      border: 1px solid #b8e6b8;
+      background: #23272f;
+      color: #00f6ff;
+      border: 1.5px solid #00f6ff;
+      box-shadow: 0 0 8px #00f6ff;
       padding: 10px;
       border-radius: 6px;
       text-align: center;
@@ -163,25 +182,31 @@
     <button class="tech-back-btn back-bottom-center" id="back-work">&larr; Back</button>
   </div>
 
-  <!-- Contact Section (UPDATED) -->
+  <!-- Contact Section (TECH STYLE, GLOWING BORDER) -->
   <div id="contact-section" class="hidden">
-    <div class="contact-letter-box">
-      <h2>Send a Letter</h2>
-      <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST">
-        <div class="success-message" id="successMessage">
-          Thank you for your letter! I’ll reply soon.
+    <div class="about-cici-container">
+      <div class="about-cici-box contact-tech-box">
+        <h2>Contact</h2>
+        <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST" style="margin-bottom:20px;">
+          <div class="success-message" id="successMessage">
+            Thank you for your letter! I’ll reply soon.
+          </div>
+          <label for="name">Your Name</label>
+          <input type="text" name="name" id="name" required placeholder="Enter your name">
+
+          <label for="email">Your Email</label>
+          <input type="email" name="email" id="email" required placeholder="Enter your email">
+
+          <label for="message">Your Message</label>
+          <textarea name="message" id="message" required placeholder="Write your letter here..."></textarea>
+
+          <button type="submit">Send Letter</button>
+        </form>
+        <div style="text-align:center;font-size:0.95em;color:#00f6ff;">
+          Or email: <a href="mailto:msc.trankhanhchi@gmail.com" style="color:#00f6ff; text-shadow: 0 0 8px #00f6ff;">msc.trankhanhchi@gmail.com</a><br>
+          Phone: <a href="tel:+84936434348" style="color:#00f6ff; text-shadow: 0 0 8px #00f6ff;">(+84) 936 434348</a>
         </div>
-        <label for="name">Your Name</label>
-        <input type="text" name="name" id="name" required placeholder="Enter your name">
-
-        <label for="email">Your Email</label>
-        <input type="email" name="email" id="email" required placeholder="Enter your email">
-
-        <label for="message">Your Message</label>
-        <textarea name="message" id="message" required placeholder="Write your letter here..."></textarea>
-
-        <button type="submit">Send Letter</button>
-      </form>
+      </div>
     </div>
     <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
   </div>
