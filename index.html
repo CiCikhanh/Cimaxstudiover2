@@ -182,31 +182,33 @@
     <button class="tech-back-btn back-bottom-center" id="back-work">&larr; Back</button>
   </div>
 
-  <!-- Contact Section (TECH STYLE, GLOWING BORDER) -->
-  <div id="contact-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box contact-tech-box">
-        <h2>Contact</h2>
-        <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST" style="margin-bottom:20px;">
-          <div class="success-message" id="successMessage">
-            Thank you for your letter! I’ll reply soon.
-          </div>
+  <!-- Contact Section (Tech Style, Clean & Organized) -->
+<div id="contact-section" class="hidden">
+  <div class="about-cici-container">
+    <div class="about-cici-box contact-tech-box">
+      <h2>Send a Letter</h2>
+      <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST" autocomplete="off">
+        <div class="success-message" id="successMessage">
+          Thank you for your letter! I’ll reply soon.
+        </div>
+        <div class="contact-form-group">
           <label for="name">Your Name</label>
           <input type="text" name="name" id="name" required placeholder="Enter your name">
-
+        </div>
+        <div class="contact-form-group">
           <label for="email">Your Email</label>
           <input type="email" name="email" id="email" required placeholder="Enter your email">
-
+        </div>
+        <div class="contact-form-group">
           <label for="message">Your Message</label>
-          <textarea name="message" id="message" required placeholder="Write your letter here..."></textarea>
-
-          <button type="submit">Send Letter</button>
-        </form>
-      
-      </div>
+          <textarea name="message" id="message" required placeholder="Write your letter here..." rows="5"></textarea>
+        </div>
+        <button type="submit">Send Letter</button>
+      </form>
     </div>
-    <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
   </div>
+  <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
+</div>
 
   <!-- === Services Flex Overlay === -->
   <div id="services-flex-overlay" class="hidden">
