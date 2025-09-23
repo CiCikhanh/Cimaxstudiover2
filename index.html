@@ -11,6 +11,83 @@
     /* Utility for demo: Hide sections by default */
     .hidden { display: none !important; }
   </style>
+  .contact-letter-box {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+      max-width: 400px;
+      width: 100%;
+      border: 2px solid #4169e1;
+      position: relative;
+      margin: 0 auto;
+    }
+    .contact-letter-box::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 8px;
+      background: #4169e1;
+      border-radius: 5px 5px 0 0;
+    }
+    .contact-letter-box h2 {
+      margin-top: 0;
+      color: #4169e1;
+      text-align: center;
+      font-size: 2em;
+    }
+    .contact-letter-box label {
+      display: block;
+      margin: 12px 0 4px 0;
+      color: #333;
+      font-weight: 500;
+    }
+    .contact-letter-box input,
+    .contact-letter-box textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 1em;
+      resize: vertical;
+    }
+    .contact-letter-box textarea {
+      min-height: 80px;
+      max-height: 180px;
+    }
+    .contact-letter-box button {
+      background: #4169e1;
+      color: #fff;
+      font-size: 1em;
+      padding: 12px 0;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .contact-letter-box button:hover {
+      background: #2746a3;
+    }
+    .success-message {
+      background: #e6f7e6;
+      color: #256029;
+      border: 1px solid #b8e6b8;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 12px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <!-- Mindmap Navigation -->
@@ -88,13 +165,26 @@
 
   <!-- Contact Section -->
   <div id="contact-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box">
-        <h2>Contact</h2>
-        <p>
-          Email: <a href="msc.trankhanhchi@gmail.com" style="color:#00f6ff">msc.trankhanhchi@gmail.com</a><br>
-          Phone Number: <a href="#" style="color:#00f6ff">(+84) 936 434348</a>
-        </p>
+    <div class="contact-letter-box">
+      <h2>Send a Letter</h2>
+      <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST">
+        <div class="success-message" id="successMessage">
+          Thank you for your letter! I’ll reply soon.
+        </div>
+        <label for="name">Your Name</label>
+        <input type="text" name="name" id="name" required placeholder="Enter your name">
+
+        <label for="email">Your Email</label>
+        <input type="email" name="email" id="email" required placeholder="Enter your email">
+
+        <label for="message">Your Message</label>
+        <textarea name="message" id="message" required placeholder="Write your letter here..."></textarea>
+
+        <button type="submit">Send Letter</button>
+      </form>
+      <div style="margin-top:20px;text-align:center;font-size:0.95em;color:#888;">
+        Or email: <a href="mailto:msc.trankhanhchi@gmail.com" style="color:#4169e1">msc.trankhanhchi@gmail.com</a><br>
+        Phone: <a href="tel:+84936434348" style="color:#4169e1">(+84) 936 434348</a>
       </div>
     </div>
     <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
@@ -286,6 +376,33 @@
         showMain();
       }
     });
+
+    // CONTACT FORM AJAX (Show success message, prevent redirect)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            document.getElementById('successMessage').style.display = 'block';
+            form.reset();
+          } else {
+            response.json().then(data => {
+              alert(data.error || 'Oops! There was a problem.');
+            });
+          }
+        }).catch(error => {
+          alert('Oops! There was a problem.');
+        });
+      });
+    }
   </script>
 </body>
 </html>
