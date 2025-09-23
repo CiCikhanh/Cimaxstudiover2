@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Send Letter Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .contact-box {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+      max-width: 400px;
+      width: 100%;
+      border: 2px solid #4169e1;
+      position: relative;
+    }
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 8px;
+      background: #4169e1;
+      border-radius: 5px 5px 0 0;
+    }
+    .contact-box h2 {
+      margin-top: 0;
+      color: #4169e1;
+      text-align: center;
+      font-size: 2em;
+    }
+    label {
+      display: block;
+      margin: 12px 0 4px 0;
+      color: #333;
+      font-weight: 500;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 1em;
+      resize: vertical;
+    }
+    textarea {
+      min-height: 80px;
+      max-height: 180px;
+    }
+    button {
+      background: #4169e1;
+      color: #fff;
+      font-size: 1em;
+      padding: 12px 0;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background: #2746a3;
+    }
+    .success-message {
+      background: #e6f7e6;
+      color: #256029;
+      border: 1px solid #b8e6b8;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-box">
+    <h2>Send a Letter</h2>
+    <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST">
+      <div class="success-message" id="successMessage">
+        Thank you for your letter! I’ll reply soon.
+      </div>
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required placeholder="Enter your name">
+
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required placeholder="Enter your email">
+
+      <label for="message">Your Message</label>
+      <textarea name="message" id="message" required placeholder="Write your letter here..."></textarea>
+
+      <button type="submit">Send Letter</button>
+    </form>
+  </div>
+  <script>
+    // Show success message without redirect (optional)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('successMessage').style.display = 'block';
+          form.reset();
+        } else {
+          response.json().then(data => {
+            alert(data.error || 'Oops! There was a problem.');
+          });
+        }
+      }).catch(error => {
+        alert('Oops! There was a problem.');
+      });
+    });
+  </script>
+</body>
+</html>
