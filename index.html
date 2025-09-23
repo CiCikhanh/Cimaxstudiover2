@@ -186,15 +186,12 @@
     <button class="tech-back-btn back-bottom-center" id="back-work">&larr; Back</button>
   </div>
 
-  <!-- Contact Section (Tech Style, Clean & Organized) -->
+ <!-- Contact Section (Tech Style, Clean & Organized, Success Message Only) -->
 <div id="contact-section" class="hidden">
   <div class="about-cici-container">
     <div class="about-cici-box contact-tech-box">
       <h2>Send a Letter</h2>
       <form id="contactForm" action="https://formspree.io/f/xeolyabv" method="POST" autocomplete="off">
-        <div class="success-message" id="successMessage">
-          Thank you for your letter! I’ll reply soon.
-        </div>
         <div class="contact-form-group">
           <label for="name">Your Name</label>
           <input type="text" name="name" id="name" required placeholder="Enter your name">
@@ -209,6 +206,9 @@
         </div>
         <button type="submit">Send Letter</button>
       </form>
+      <div class="success-message" id="successMessage" style="display:none;">
+        Thank you for your letter! I’ll reply soon.
+      </div>
     </div>
   </div>
   <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
